@@ -7,6 +7,8 @@ package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -24,6 +26,8 @@ public class Loan {
     private double fine;
     @OneToOne
     private Client client;
+    @Enumerated(EnumType.STRING)
+    private LoanState loanState;
 
     public int getId() {
         return id;
