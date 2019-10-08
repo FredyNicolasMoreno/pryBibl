@@ -7,36 +7,26 @@ package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 /**
  *
  * @author USUARIO
  */
 @Entity
-public class Client {
+public class Author {
+
     @Id
     private int id;
-    @OneToOne
-    private City city;
     private String name;
-    private String adress;
-    private String phonenumber;
-
+    private String nationality;
+    
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     public String getName() {
@@ -47,20 +37,12 @@ public class Client {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getNationality() {
+        return nationality;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
     
     
