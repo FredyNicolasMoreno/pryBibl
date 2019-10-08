@@ -15,6 +15,10 @@ import javax.persistence.Id;
 @Entity
 public class Book {
 
+    private String title;
+    private String desc;
+    private int quantity;
+    private int edition;
     @Id
     private int id;
 
