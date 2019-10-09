@@ -16,7 +16,7 @@ import javax.persistence.Id;
 public class Book {
 
     private String title;
-    private String desc;
+    private String bookDescription;
     private int quantity;
     private int edition;
     @Id
