@@ -9,6 +9,61 @@ package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
  *
  * @author fnico
  */
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import javax.persistence.Entity;
+
+@Entity
 public class City {
+
+    @Id
+    private int id;
+    private String title;
+    private String description;
+    private int quantity;
+    private int edition;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getEdition() {
+        return edition;
+    }
+
+    public void setEdition(int edition) {
+        this.edition = edition;
+    }
+
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }
