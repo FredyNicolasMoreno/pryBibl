@@ -29,7 +29,7 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
             $scope.datosFormulario.id=consecutivoCiudad++;
         }
         $scope.lista.push($scope.datosFormulario);
-        alert("Sus datos han sido guardados con éxito");
+        alert("Sus datos han sido guardados con éxito asd");
         $scope.cancelar(); 
     };
     $scope.cancelar = function () {

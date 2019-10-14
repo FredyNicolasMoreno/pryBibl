@@ -57,7 +57,7 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
                     $scope.datosFormulario.direccion,
                     $scope.datosFormulario.telefono,
                     $scope.datosFormulario.ciudad];
-        $http.put('./webresources/ClientService', cliente).then(
+        $http.post('./webresources/ClientService', cliente).then(
                 function successCallback(response) {
                     console.log("Successfully POST-ed data");
                 },

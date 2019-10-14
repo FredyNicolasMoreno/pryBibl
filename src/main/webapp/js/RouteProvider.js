@@ -11,6 +11,7 @@ app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {templateUrl: 'partials/menu.html'});
         $routeProvider.when('/Cliente', {templateUrl: 'partials/Cliente.html', controller: 'ClienteCtrl'});
         $routeProvider.when('/Ciudad', {templateUrl: 'partials/Ciudad.html', controller: 'CiudadCtrl'});
+        $routeProvider.when('/Autor', {templateUrl: 'partials/Autor.html', controller: 'AutorCtrl'});
   	$routeProvider.otherwise({redirectTo: '/'}); 
 }]);
 

@@ -30,7 +30,6 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.ClientService.class);
-        resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.GeneralService.class);
     }
     
 }
