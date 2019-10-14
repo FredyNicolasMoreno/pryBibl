@@ -22,7 +22,7 @@ public class City {
     private int id;
     private String name;
 
-
+ 
     public int getId() {
         return id;
     }

@@ -2,7 +2,7 @@
 
 var listaCliente=   [
                         {"id":1, "nombre":"Deisy", "direccion":"car 8a # 45 - 121", "telefono":"3114456556", "ciudad":{"id":1, "nombre":"Tunja"}},
-                        {"id":1, "nombre":"Pedro", "direccion":"car 46 # 163b - 41", "telefono":"3207594755", "ciudad":{"id":2, "nombre":"Bogota"}}
+                        {"id":2, "nombre":"Pedro", "direccion":"car 46 # 163b - 41", "telefono":"3207594755", "ciudad":{"id":2, "nombre":"Bogota"}}
                     ];
 var consecutivoCliente=2;
 
@@ -15,15 +15,33 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
     $scope.listar=function(){
         $scope.lista = listaCliente;
     };
-
+    $http.get('./webresources/ClientService', {})
+                .success(function (data, status, headers, config) {
+                    // $scope.lista = data;
+                    listaCliente = data;
+                    console.log(data);
+                    //listar
+                    $scope.lista = listaCliente;
+                    $scope.listaCiudad = listaCiudad;
+                    $scope.datosFormulario = {};
+                    $scope.panelEditar = false;
+                    $scope.listar = function () {
+                        $scope.lista = listaCliente;
+                    };
+                    $scope.listar();
+                }).error(function (data, status, headers, config) {
+            alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
+        });
     $scope.listar();
     //guardar
-    $scope.nuevo = function () {
+    $scope.nuevoCliente = function () {
+        console.log("si1");
         $scope.panelEditar = true;
         $scope.datosFormulario = {};
     };
     
-    $scope.guardar = function () {
+    $scope.guardarCliente = function () {
+        console.log("si2");
        $scope.errores = {};
         var error = false;
         
@@ -33,7 +51,20 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
             $scope.datosFormulario.id=consecutivoCliente++;
         }
         $scope.lista.push($scope.datosFormulario);
-        alert("Sus datos han sido guardados con éxito");
+        alert("Sus datos han sido guardados con éxito hermano");
+        var cliente = [$scope.datosFormulario.id,
+                    $scope.datosFormulario.nombre,
+                    $scope.datosFormulario.direccion,
+                    $scope.datosFormulario.telefono,
+                    $scope.datosFormulario.ciudad];
+        $http.put('./webresources/ClientService', cliente).then(
+                function successCallback(response) {
+                    console.log("Successfully POST-ed data");
+                },
+                function errorCallback(response) {
+                    console.log("POST-ing of data failed");
+                }
+        );
         $scope.cancelar(); 
     };
     
