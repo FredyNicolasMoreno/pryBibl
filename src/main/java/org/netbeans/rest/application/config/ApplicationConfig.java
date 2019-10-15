@@ -29,7 +29,11 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.AuthorService.class);
+        resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.BookService.class);
+        resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.CityService.class);
         resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.ClientService.class);
+        resources.add(co.edu.uptc.sw1.proyectoBiblioteca.services.LoanService.class);
     }
     
 }
