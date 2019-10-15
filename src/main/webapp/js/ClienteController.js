@@ -1,9 +1,9 @@
 'use strict';
 
-/*var listaCliente=   [
+var listaCliente=   [
                         {"id":1, "nombre":"Deisy", "direccion":"car 8a # 45 - 121", "telefono":"3114456556", "ciudad":{"id":1, "nombre":"Tunja"}},
                         {"id":2, "nombre":"Pedro", "direccion":"car 46 # 163b - 41", "telefono":"3207594755", "ciudad":{"id":2, "nombre":"Bogota"}}
-                    ];*/
+                    ];
 var consecutivoCliente=2;
 
 module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
@@ -55,7 +55,7 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
                     $scope.datosFormulario.nombre,
                     $scope.datosFormulario.direccion,
                     $scope.datosFormulario.telefono,
-                    $scope.datosFormulario.ciudad];
+                    $scope.datosFormulario.ciudad.id];
         $http.post('./webresources/ClientService', cliente).then(
                 function successCallback(response) {
                     console.log("Successfully POST-ed data");

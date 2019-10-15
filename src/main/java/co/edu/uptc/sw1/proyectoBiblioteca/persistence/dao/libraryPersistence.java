@@ -18,13 +18,16 @@ public class libraryPersistence {
     @PersistenceContext
     private EntityManager em;
     
-    public void insertClient(int id, String name, String adress, String phonenumber){
+    public void insertClient(int id, String name, String adress, String phonenumber, int cityId){
+        System.out.println("siiiiiiiiii");
+        String query = "select * from client";
+        em.createQuery(query).getResultList();
        em.createNativeQuery("INSERT INTO client (ID, adress, name, phonenumber, city) VALUES (?,?,?,?,?)")
       .setParameter(1, id)
       .setParameter(2,adress)
       .setParameter(3, name)
       .setParameter(3, phonenumber)
-      .setParameter(3, phonenumber)
+      .setParameter(3, cityId)
       .executeUpdate();
     }
 }

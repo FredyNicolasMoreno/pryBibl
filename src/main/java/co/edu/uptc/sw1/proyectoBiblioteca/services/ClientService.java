@@ -5,9 +5,11 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.ClientDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,10 +20,14 @@ import javax.ws.rs.Path;
  */
 @Path("ClientService")
 public class ClientService {
+    @EJB
+    private ClientDao cd;
+    
+    
     ArrayList<Client> list = new ArrayList();
     @POST
     public void add(Object[] client) {
-       
+        cd.createClient(client);
     }
     
     @GET
