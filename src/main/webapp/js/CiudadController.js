@@ -1,7 +1,8 @@
 'use strict';
 
-var listaCiudad=[{"id":1, "nombre":"Tunja"},{"id":2, "nombre":"Bogota"}];
-var consecutivoCiudad=2;
+//var listaCiudad=[{"id":1, "nombre":"Tunja"},{"id":2, "nombre":"Bogota"}];
+var listaCiudad = [];
+var consecutivoCiudad=0;
 
 module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
     //listar
@@ -10,6 +11,23 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
     $scope.panelEditar = false;
     $scope.listar=function(){
         $scope.lista = listaCiudad;
+    $http.get('./webresources/CityService', {})
+                .success(function (data, status, headers, config) {
+                    // $scope.lista = data;
+                    listaCiudad = data;
+                    console.log(data);
+                    //listar
+                    $scope.lista = listaCiudad;
+                    $scope.datosFormulario = {};
+                    $scope.panelEditar = false;
+                    $scope.listar = function () {
+                        $scope.lista = listaCiudad;
+                    };
+
+                    $scope.listar();
+                }).error(function (data, status, headers, config) {
+            alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
+        });
     };
 
     $scope.listar();
@@ -29,7 +47,17 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
             $scope.datosFormulario.id=consecutivoCiudad++;
         }
         $scope.lista.push($scope.datosFormulario);
-        alert("Sus datos han sido guardados con éxito asd");
+        alert("Sus datos han sido guardados con éxito");
+        var city = [$scope.datosFormulario.id,
+                    $scope.datosFormulario.nombre];
+        $http.post('./webresources/CityService', city).then(
+                function successCallback(response) {
+                    console.log("Successfully POST-ed data");
+                },
+                function errorCallback(response) {
+                    console.log("POST-ing of data failed");
+                }
+        );
         $scope.cancelar(); 
     };
     $scope.cancelar = function () {

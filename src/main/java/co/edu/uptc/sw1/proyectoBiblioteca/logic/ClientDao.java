@@ -23,7 +23,7 @@ public class ClientDao {
     private EntityManager em;
     
     public void createClient(Object[] list){
-        insertClient(Integer.parseInt(String.valueOf(list[4])), list[2].toString(), list[1].toString(), list[3].toString(), Integer.parseInt(String.valueOf(list[4])));
+        insertClient(Integer.parseInt(String.valueOf(list[0])), list[2].toString(), list[1].toString(), list[3].toString(), Integer.parseInt(String.valueOf(list[4])));
     }
     
     public void insertClient(int id, String name, String adress, String phonenumber, int cityId){
