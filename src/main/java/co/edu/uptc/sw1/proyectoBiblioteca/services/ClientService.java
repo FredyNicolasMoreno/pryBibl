@@ -21,7 +21,7 @@ public class ClientService {
     ArrayList<Client> list = new ArrayList();
     @POST
     public void add(Object[] client) {
-        System.out.println(client[0] + " " +  client[1] + " "+ client[2]);
+       
     }
     
     @GET

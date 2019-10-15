@@ -14,7 +14,17 @@ import javax.persistence.PersistenceContext;
  * @author USUARIO
  */
 @Stateless
-public class libraryDAO {
+public class libraryPersistence {
     @PersistenceContext
     private EntityManager em;
+    
+    public void insertClient(int id, String name, String adress, String phonenumber){
+       em.createNativeQuery("INSERT INTO client (ID, adress, name, phonenumber, city) VALUES (?,?,?,?,?)")
+      .setParameter(1, id)
+      .setParameter(2,adress)
+      .setParameter(3, name)
+      .setParameter(3, phonenumber)
+      .setParameter(3, phonenumber)
+      .executeUpdate();
+    }
 }
