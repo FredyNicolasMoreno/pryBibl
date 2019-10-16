@@ -23,8 +23,6 @@ public class ClientService {
     @EJB
     private ClientDao cd;
     
-    
-    ArrayList<Client> list = new ArrayList();
     @POST
     public void add(Object[] client) {
         cd.createClient(client);
@@ -32,7 +30,6 @@ public class ClientService {
     
     @GET
     public List<Client> enviarLista() {
-        System.out.println("HOls");
-        return list;
+        return cd.getClients();
     }
 }

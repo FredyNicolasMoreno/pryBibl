@@ -5,8 +5,11 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -19,6 +22,17 @@ public class Author {
     private int id;
     private String name;
     private String nationality;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+    
     
     
     public int getId() {

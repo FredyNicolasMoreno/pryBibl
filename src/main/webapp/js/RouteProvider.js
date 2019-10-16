@@ -8,6 +8,7 @@ var app=angular.module('adminBiblioteca', [
   'adminBiblioteca.controllers'
 ]);
 app.config(['$routeProvider', function($routeProvider) {
+        
 	$routeProvider.when('/', {templateUrl: 'partials/menu.html'});
         $routeProvider.when('/Cliente', {templateUrl: 'partials/Cliente.html', controller: 'ClienteCtrl'});
         $routeProvider.when('/Ciudad', {templateUrl: 'partials/Ciudad.html', controller: 'CiudadCtrl'});

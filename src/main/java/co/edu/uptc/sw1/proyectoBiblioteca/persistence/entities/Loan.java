@@ -25,6 +25,8 @@ public class Loan {
     private int days;
     private double fine;
     @OneToOne
+    private Book book;
+    @OneToOne
     private Client client;
     @Enumerated(EnumType.STRING)
     private LoanState loanState;

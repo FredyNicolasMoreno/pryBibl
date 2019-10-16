@@ -6,6 +6,7 @@
 package co.edu.uptc.sw1.proyectoBiblioteca.logic;
 
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.libraryPersistence;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -23,16 +24,22 @@ public class ClientDao {
     private EntityManager em;
     
     public void createClient(Object[] list){
-        insertClient(Integer.parseInt(String.valueOf(list[0])), list[2].toString(), list[1].toString(), list[3].toString(), Integer.parseInt(String.valueOf(list[4])));
+        insertClient(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), list[3].toString(), Integer.parseInt(String.valueOf(list[4])));
     }
     
     public void insertClient(int id, String name, String adress, String phonenumber, int cityId){
        em.createNativeQuery("INSERT INTO client (id, adress, name, phonenumber, city_id) VALUES (?,?,?,?,?)")
       .setParameter(1, id)
-      .setParameter(2,adress)
+      .setParameter(2, adress)
       .setParameter(3, name)
       .setParameter(4, phonenumber)
       .setParameter(5, cityId)
       .executeUpdate();
+        System.out.println(id);
+    }
+
+    public List<Client> getClients() {
+        String query = "Select c from Client c";
+        return em.createQuery(query).getResultList();
     }
 }

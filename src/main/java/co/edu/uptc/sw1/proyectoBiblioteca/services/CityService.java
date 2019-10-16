@@ -31,7 +31,7 @@ public class CityService {
     }
     
     @GET
-    public List<String> enviarLista() {
+    public List<City> enviarLista() {
         return cd.getCities();
     }
 }

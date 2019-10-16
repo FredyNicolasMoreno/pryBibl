@@ -30,5 +30,16 @@ public class City {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+    
+/*
+    @Override
+    public String toString() {
+        return "id: "+ id + ", nombre: " + name; //To change body of generated methods, choose Tools | Templates.
+    }*/
+ 
     
 }

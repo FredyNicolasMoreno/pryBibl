@@ -31,10 +31,8 @@ public class CityDao {
       .executeUpdate();
     }
     
-    public List<String> getCities() {
+    public List<City> getCities() {
         String query = "Select c from City c";
-        System.out.println("Lista: " + em.createQuery(query).getResultList()+ " --- " + em.createQuery(query, City.class).getResultList());
-        
         return em.createQuery(query).getResultList();
     }
 }

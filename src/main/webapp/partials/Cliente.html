@@ -26,14 +26,14 @@
                     <input class="form-control" ng-model="q"  placeholder="Buscar"/>
                 </th>
             </tr>
-            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
-                	<td>{{row.nombre}}</td>
+            <tr dir-paginate="row in listaC|filter: q|itemsPerPage:10">
+                	<td>{{row.name}}</td>
                 
-                	<td>{{row.direccion}}</td>
+                	<td>{{row.adress}}</td>
                 
-                	<td>{{row.telefono}}</td>
+                	<td>{{row.phonenumber}}</td>
                 
-                        <td class="row">{{row.ciudad.nombre}}</td>     
+                        <td class="row">{{row.city.name}}</td>     
 				         
 				<td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
@@ -59,7 +59,7 @@
 	        <input id="nombre" 
 	               class="form-control" 
 	    		   type="text"
-	               ng-model="datosFormulario.nombre"
+	               ng-model="datosFormularioCliente.nombre"
 	    		   placeholder="nombre"/>
 	        <div ng-show="errores.nombre">{{errores.nombre}}</div>
 	    </div>				
@@ -68,7 +68,7 @@
 	        <input id="direccion" 
 	               class="form-control" 
 	    		   type="text"
-	               ng-model="datosFormulario.direccion"
+	               ng-model="datosFormularioCliente.direccion"
 	    		   placeholder="direccion"/>
 	        <div ng-show="errores.direccion">{{errores.direccion}}</div>
 	    </div>				
@@ -77,7 +77,7 @@
 	        <input id="telefono" 
 	               class="form-control" 
 	    		   type="text"
-	               ng-model="datosFormulario.telefono"
+	               ng-model="datosFormularioCliente.telefono"
 	    		   placeholder="telefono"/>
 	        <div ng-show="errores.telefono">{{errores.telefono}}</div>
 	    </div> 
@@ -85,8 +85,8 @@
 		    <div class="form-group col-md-6" ng-class="errores.ciudad?'error':''">
 		        <label>ciudad</label>
 				<select id="ciudad" class="form-control" 
-		            ng-model="datosFormulario.ciudad"
-		            ng-options="option.nombre for option in listaCiudad track by option.id">
+		            ng-model="datosFormularioCliente.ciudad"
+		            ng-options="option.name for option in listCity track by option.id">
 		    	</select>
 		        <div ng-show="errores.ciudad">{{errores.ciudad}}</div>
 		    </div>

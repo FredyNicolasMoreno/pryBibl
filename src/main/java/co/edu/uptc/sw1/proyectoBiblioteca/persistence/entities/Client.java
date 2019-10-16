@@ -7,6 +7,7 @@ package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -17,7 +18,7 @@ import javax.persistence.OneToOne;
 public class Client {
     @Id
     private int id;
-    @OneToOne
+    @ManyToOne
     private City city;
     private String name;
     private String adress;
