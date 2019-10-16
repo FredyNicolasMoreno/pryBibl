@@ -5,10 +5,8 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.logic;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.libraryPersistence;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.List;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,7 +33,6 @@ public class ClientDao {
       .setParameter(4, phonenumber)
       .setParameter(5, cityId)
       .executeUpdate();
-        System.out.println(id);
     }
 
     public List<Client> getClients() {

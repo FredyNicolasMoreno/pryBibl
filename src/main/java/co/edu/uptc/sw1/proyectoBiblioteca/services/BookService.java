@@ -5,10 +5,10 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.BookDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Book;
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
-import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,15 +19,16 @@ import javax.ws.rs.Path;
  */
 @Path("BookService")
 public class BookService {
-    ArrayList<Book> list = new ArrayList();
+    @EJB
+    private BookDao bd;
     @POST
     public void add(Object[] book) {
-       
+       bd.createBook(book);
     }
     
     @GET
     public List<Book> enviarLista() {
         System.out.println("HOls");
-        return list;
+        return bd.getBooks();
     }
 }

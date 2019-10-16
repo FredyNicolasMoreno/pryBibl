@@ -19,7 +19,6 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
                     // $scope.lista = data;
                     listaCliente = data;
                     //listar
-                    var j;
                     listClientJson = [];
                     for (var i = 0; i < listaCliente.length; i++) {
                         listClientJson.push({
