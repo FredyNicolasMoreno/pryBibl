@@ -5,7 +5,7 @@ var listaLibro = [];
 var listBookJson = [];
 
 module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
-
+        $scope.listaB = listBookJson;
         $http.get('./webresources/ServicioLibro', {}).success(function (data, status, headers, config) {
             // $scope.lista = data;
                     listaLibro = data;
@@ -13,7 +13,7 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
                     var j;
                     listBookJson = [];
                     for (var i = 0; i < listaLibro.length; i++) {
-                        listClientJson.push({
+                        listBookJson.push({
                             "adress": listaLibro[i].adress,
                             "city": listaLibro[i].city,
                             "id": listaLibro[i].id,
@@ -21,7 +21,7 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
                             "phonenumber": listaLibro[i].phonenumber
                         });
                     }
-                    $scope.listaC = listClientJson;
+                    $scope.listaB = listBookJson;
                     $scope.listCity = listJson;
                     console.log("face23");
                     $scope.datosFormularioCliente = {};
