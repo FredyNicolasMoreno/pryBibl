@@ -5,8 +5,8 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.logic;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.BookDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Book;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -16,16 +16,15 @@ import javax.ejb.Stateless;
  * @author USUARIO
  */
 @Stateless
-public class LogicClient {
-    
+public class LogicBook {
     @EJB
-    private ClientDao cd;
+    private BookDao bd;
     
-    public void insert (Client client){
-        cd.createClient(client);
+    public void insert (Book book){
+        bd.createBook(book);
     }
     
-    public List<Client> enviarLista() {
-        return cd.getClients();
+    public List<Book> enviarLista() {
+        return bd.getBooks();
     }
 }

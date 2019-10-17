@@ -31,19 +31,15 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
                     }
                     $scope.listaC = listClientJson;
                     $scope.listCity = listJson;
-                    console.log("face23");
+                    
                     $scope.datosFormularioCliente = {};
                     $scope.panelEditar = false;
-                    $scope.listar = function () {
-                        $scope.listaC = listClientJson;
-                    };
                     $scope.listar();
                 }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
         });
         $scope.listar = function () {
             $scope.listaC = listClientJson;
-            console.log(listaC);
             consecutivoCliente = listClientJson.length;
         };
         //guardar
@@ -58,10 +54,8 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
 
             if (error)
                 return;
-            if (!$scope.datosFormularioCliente.id) {
-                $scope.datosFormularioCliente.id = consecutivoCliente++;
-                console.log(consecutivoCliente);
-            }
+            $scope.datosFormularioCliente.id = consecutivoCliente++;
+            console.log(consecutivoCliente);
             alert("Sus datos han sido guardados con éxito");
             var cliente = {"id": $scope.datosFormularioCliente.id,
                 "name": $scope.datosFormularioCliente.name,

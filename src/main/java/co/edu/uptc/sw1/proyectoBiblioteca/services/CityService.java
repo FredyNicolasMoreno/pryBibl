@@ -5,12 +5,8 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.CityDao;
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicCity;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.City;
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;

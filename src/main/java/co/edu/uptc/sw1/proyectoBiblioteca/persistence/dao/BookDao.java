@@ -20,9 +20,10 @@ public class BookDao {
     @PersistenceContext
     private EntityManager em;
     
-     public void createBook(Object[] list){
-        insertBook(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), Integer.parseInt(String.valueOf(list[3])), Integer.parseInt(String.valueOf(list[4])),Integer.parseInt(String.valueOf(list[5])));
-    }
+     public void createBook(Book book){
+        //insertBook(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), Integer.parseInt(String.valueOf(list[3])), Integer.parseInt(String.valueOf(list[4])),Integer.parseInt(String.valueOf(list[5])));
+        em.persist(book);
+     }
     
     public void insertBook(int id, String title, String bookdescription, int quantity, int edition, int authorId){
        em.createNativeQuery("INSERT INTO book (title, bookdescription, quantity, edition, id, author_id) VALUES (?,?,?,?,?,?)")

@@ -5,6 +5,8 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicCity;
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicClient;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.List;
@@ -19,16 +21,18 @@ import javax.ws.rs.Path;
  */
 @Path("ClientService")
 public class ClientService {
+    
     @EJB
-    private ClientDao cd;
+    private LogicClient clients;
     
     @POST
     public void add(Client client) {
-        cd.createClient(client);
+        System.out.println(client.getId() + "--" + client.getName() + "--" + client.getPhonenumber() + "--" + client.getCity() +  "--cityName: "+ client.getCity().getName() + "--" + client.getAdress());
+        this.clients.insert(client);
     }
     
     @GET
     public List<Client> enviarLista() {
-        return cd.getClients();
+        return clients.enviarLista();
     }
 }

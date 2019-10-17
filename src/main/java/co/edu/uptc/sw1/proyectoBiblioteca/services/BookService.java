@@ -5,6 +5,7 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicBook;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.BookDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Book;
 import java.util.List;
@@ -21,14 +22,15 @@ import javax.ws.rs.Path;
 public class BookService {
     
     @EJB
-    private BookDao bd;
+    private LogicBook lb;
+    
     @POST
-    public void add(Object[] book) {
-       bd.createBook(book);
+    public void add(Book book) {
+       lb.insert(book);
     }
     
     @GET
     public List<Book> enviarLista() {
-        return bd.getBooks();
+        return lb.enviarLista();
     }
 }
