@@ -5,10 +5,12 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.AutorDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Author;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,15 +21,16 @@ import javax.ws.rs.Path;
  */
 @Path("AuthorService")
 public class AuthorService {
-    ArrayList<Author> list = new ArrayList();
+    @EJB
+    private AutorDao ad;
+    
     @POST
     public void add(Object[] author) {
-       
+       ad.createAutor(author);
     }
     
     @GET
     public List<Author> enviarLista() {
-        System.out.println("HOls");
-        return list;
+        return ad.getAutor();
     }
 }
