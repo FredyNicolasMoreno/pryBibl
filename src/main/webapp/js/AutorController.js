@@ -26,9 +26,6 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
                     $scope.listAuthor = listAutorJson;
                     $scope.datosFormularioAutor = {};
                     $scope.panelEditar = false;
-                    $scope.listar = function () {
-                        $scope.listaA = listAutorJson;
-                    };
                     $scope.listar();
                 }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
@@ -54,9 +51,9 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
                 $scope.datosFormularioAutor.id = consecutivoAutor++;
             }
             alert("Datos guardados con exito");
-            var autor = [$scope.datosFormularioAutor.id,
-                $scope.datosFormularioAutor.nombre,
-                $scope.datosFormularioAutor.nacionalidad];
+            var autor = {"id":$scope.datosFormularioAutor.id,
+                "name":$scope.datosFormularioAutor.name,
+                "nationality":$scope.datosFormularioAutor.nationality};
             $http.post('./webresources/AuthorService/', autor).then(
                     function successCallback(response) {
                         console.log("Successfully POST-ed data");

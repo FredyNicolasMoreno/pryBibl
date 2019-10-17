@@ -3,33 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uptc.sw1.proyectoBiblioteca.services;
+package co.edu.uptc.sw1.proyectoBiblioteca.logic;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicAuthor;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.AutorDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Author;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author USUARIO
  */
-@Path("AuthorService")
-public class AuthorService {
+@Stateless
+public class LogicAuthor {
+    
     @EJB
-    private LogicAuthor la;
+    private AutorDao authorDao;
     
-    @POST
-    public void add(Author author) {
-       la.insert(author);
+    public void insert (Author author){
+        authorDao.createAutor(author);
     }
     
-    @GET
     public List<Author> enviarLista() {
-        return la.enviarLista();
+        return authorDao.getAutor();
     }
-    
 }

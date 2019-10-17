@@ -21,8 +21,8 @@ public class AutorDao {
     @PersistenceContext
     private EntityManager em;
 
-    public void createAutor(Object[] list) {
-        insertAutor(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString());
+    public void createAutor(Author author){
+        em.persist(author);
     }
 
     public void insertAutor(int id, String name, String nationality) {
