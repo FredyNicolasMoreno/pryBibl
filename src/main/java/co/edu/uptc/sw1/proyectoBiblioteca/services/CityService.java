@@ -26,8 +26,11 @@ public class CityService {
     private CityDao cd;
 
      @POST
-    public void add(Object[] city) {
+    public void add(City city) {
         cd.createCity(city);
+        System.out.println(city.getId());
+         System.out.println(city.getName());
+         System.out.println(city);
     }
     
     @GET

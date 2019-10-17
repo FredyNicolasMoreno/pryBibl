@@ -20,8 +20,9 @@ public class CityDao {
     @PersistenceContext
     private EntityManager em;
     
-    public void createCity(Object[] list){
-        insertCity(Integer.parseInt(String.valueOf(list[0])), list[1].toString());
+    public void createCity(City list){
+        //insertCity(Integer.parseInt(String.valueOf(list[0])), list[1].toString());
+        em.persist(list);
     }
     
     public void insertCity(int id, String name){

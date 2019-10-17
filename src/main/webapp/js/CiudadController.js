@@ -19,7 +19,6 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
                     // $scope.lista = data;
                     //listar
                     listaCiudad = data;
-                    var j;
                     listJson = [];
 
                     for (var i = 0; i < listaCiudad.length; i++) {
@@ -59,12 +58,11 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
             }
             // $scope.lista.push($scope.datosFormularioCiudad);
             alert("Sus datos han sido guardados con éxito");
-            var city = [$scope.datosFormularioCiudad.id,
-                $scope.datosFormularioCiudad.nombre];
+            var city = { "id": $scope.datosFormularioCiudad.id,
+                "name": $scope.datosFormularioCiudad.name};
             $http.post('./webresources/CityService', city).then(
                     function successCallback(response) {
-                        +
-                                console.log("Successfully POST-ed data");
+                        console.log("Successfully POST-ed data");
                     },
                     function errorCallback(response) {
                         console.log("POST-ing of data failed");

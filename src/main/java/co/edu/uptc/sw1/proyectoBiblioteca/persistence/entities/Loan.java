@@ -6,6 +6,7 @@
 package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
 import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,7 +21,7 @@ import javax.persistence.OneToOne;
 public class Loan {
     @Id
     private int id;
-    private LocalDate date;
+    private Date date;
     private String observation;
     private int days;
     private double fine;
@@ -39,11 +40,11 @@ public class Loan {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

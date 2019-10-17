@@ -19,6 +19,7 @@ import javax.ws.rs.Path;
  */
 @Path("BookService")
 public class BookService {
+    
     @EJB
     private BookDao bd;
     @POST

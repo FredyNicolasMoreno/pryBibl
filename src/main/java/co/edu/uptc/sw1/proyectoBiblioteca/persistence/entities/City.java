@@ -35,11 +35,16 @@ public class City {
         return name;
     }
     
+    
 /*
     @Override
     public String toString() {
         return "id: "+ id + ", nombre: " + name; //To change body of generated methods, choose Tools | Templates.
     }*/
+
+    public void setName(String name) {
+        this.name = name;
+    }
  
     
 }
