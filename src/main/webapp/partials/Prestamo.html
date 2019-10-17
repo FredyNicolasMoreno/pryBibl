@@ -2,7 +2,7 @@
     <div class="panel-heading">Parametrizaci&oacute;n de Prestamo</div>
     <div class="panel-body">
         <div class="btn-group">
-            <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Prestamo</button>
+            <button type="button" class="btn btn-default" ng-click="nuevoPrestamo()">Nuevo Prestamo</button>
         </div>
         <table class="resultados table table-striped">
             <tr>
@@ -13,7 +13,7 @@
                     Observación
                 </th>
                 <th>
-                    Estado
+                    estado
                 </th>
                 <th>
                     Dias
@@ -31,19 +31,19 @@
                     <input class="form-control" ng-model="q"  placeholder="Buscar"/>
                 </th>
             </tr>
-            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
-                <td>{{row.Fecha.getDate() + "/" + row.Fecha.getMonth() + "/" + row.Fecha.getFullYear()}}</td>
+            <tr dir-paginate="row in listaP|filter: q|itemsPerPage:10">
+                <td>{{row.date.getDate() + "/" + row.date.getMonth() + "/" + row.date.getFullYear()}}</td>
 
-                <td>{{row.Observacion}}</td>
+                <td>{{row.observation}}</td>
 
-                <td>{{row.Estado}}</td>
+                <td>{{row.state}}</td>
 
-                <td>{{row.dias}}</td>
+                <td>{{row.days}}</td>
 
-                <td class="row">{{row.cliente.nombre}}</td>   
-                <td class="row">{{row.libro.titulo}}</td>
+                <td class="row">{{row.client.name}}</td>   
+                <td class="row">{{row.book.title}}</td>
 
-                <td>{{row.multa}}</td>
+                <td>{{row.fine}}</td>
 
                 <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
@@ -64,38 +64,38 @@
     <div class="panel-heading">Parametrizaci&oacute;n de Prestamo</div>
     <div class="panel-body">
 
-        <div class="form-group col-md-6" ng-class="errores.Fecha ? 'error' : ''">
+        <div class="form-group col-md-6" ng-class="errores.date ? 'error' : ''">
             <label for="Fecha">Fecha</label>
             <input id="Fecha" 
                    class="form-control" 
                    type="date"
-                   ng-model="datosFormulario.Fecha"
-                   placeholder="Fecha"/>
-            <div ng-show="errores.Fecha">{{errores.Fecha}}</div>
+                   ng-model="datosFormularioPrestamo.fecha"
+                   placeholder="fecha"/>
+            <div ng-show="errores.fecha">{{errores.fecha}}</div>
         </div>
-        <div class="form-group col-md-6" ng-class="errores.Observacion ? 'error' : ''">
+        <div class="form-group col-md-6" ng-class="errores.observation ? 'error' : ''">
             <label for="Fecha">Observación</label>
-            <input id="Observacion" 
+            <input id="observation" 
                    class="form-control" 
                    type="text"
-                   ng-model="datosFormulario.Observacion"
-                   placeholder="Observación"/>
-            <div ng-show="errores.Observacion">{{errores.Observacion}}</div>
+                   ng-model="datosFormularioPrestamo.observation"
+                   placeholder="observation"/>
+            <div ng-show="errores.observation">{{errores.observation}}</div>
         </div>
-        <div class="form-group col-md-6" ng-class="errores.Estado ? 'error' : ''">
-            <label for="Fecha">Estado</label>
-            <select id="Estado" class="form-control" 
-                    ng-model="datosFormulario.Estado"
-                    ng-options="option.Estado for option in Estados track by option.id">
+        <div class="form-group col-md-6" ng-class="errores.estado ? 'error' : ''">
+            <label for="Fecha">estado</label>
+            <select id="estado" class="form-control" 
+                    ng-model="datosFormularioPrestamo.estado"
+                    ng-options="option for option in listaEstados track by option">
             </select>
-            <div ng-show="errores.Estado">{{errores.Estado}}</div>
+            <div ng-show="errores.estado">{{errores.estado}}</div>
         </div>
         <div class="form-group col-md-6" ng-class="errores.dias ? 'error' : ''">
             <label for="dias">Dias</label>
             <input id="dias" 
                    class="form-control" 
                    type="number"
-                   ng-model="datosFormulario.dias"
+                   ng-model="datosFormularioPrestamo.dias"
                    placeholder="dias"
                    min="1" max="20"/>
             <div ng-show="errores.dias">{{errores.dias}}</div>
@@ -104,8 +104,8 @@
             <div class="form-group col-md-6" ng-class="errores.cliente ? 'error' : ''">
                 <label>Cliente</label>
                 <select id="cliente" class="form-control" 
-                        ng-model="datosFormulario.cliente"
-                        ng-options="option.nombre for option in listaCliente track by option.id">
+                        ng-model="datosFormularioPrestamo.cliente"
+                        ng-options="option.name for option in listaCliente track by option.id">
                 </select>
                 <div ng-show="errores.cliente">{{errores.cliente}}</div>
             </div>
@@ -114,26 +114,15 @@
             <div class="form-group col-md-6" ng-class="errores.libro ? 'error' : ''">
                 <label>Libro</label>
                 <select id="libro" class="form-control" 
-                        ng-model="datosFormulario.libro"
-                        ng-options="option.titulo for option in listaLibro track by option.id">
+                        ng-model="datosFormularioPrestamo.libro"
+                        ng-options="option.title for option in listaLibro track by option.id">
                 </select>
                 <div ng-show="errores.libro">{{errores.libro}}</div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="form-group col-md-6" ng-class="errores.multa ? 'error' : ''">
-                <label>Multa</label>
-                <select id="multa" class="form-control" 
-                        ng-model="datosFormulario.multa"
-                        ng-options="option.multa for option in multa track by option.id">
-                </select>
-                <div ng-show="errores.multa">{{errores.multa}}</div>
-            </div>
-        </div>
-
         <div class="btn-group">
-            <button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+            <button type="button" class="btn btn-default" ng-click="guardarPrestamo()">Aceptar</button>
             <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
         </div>    
     </div>

@@ -5,10 +5,13 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.ClientDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.LoanDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Loan;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,15 +22,20 @@ import javax.ws.rs.Path;
  */
 @Path("LoanService")
 public class LoanService {
-    ArrayList<Loan> list = new ArrayList();
+    @EJB
+    private LoanDao ld;
+    
     @POST
     public void add(Object[] loan) {
-       
+        System.out.println("TAmaniio: " + loan.length);
+        for (int i = 0; i < loan.length; i++) {
+            System.out.println(loan[i]);
+        }
+        ld.createLoan(loan);
     }
     
     @GET
     public List<Loan> enviarLista() {
-        System.out.println("HOls");
-        return list;
+        return ld.getLoan();
     }
 }
