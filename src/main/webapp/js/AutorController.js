@@ -7,12 +7,14 @@ var listAutorJson = [];
 module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         //listar
         $scope.listaA = listAutorJson;
+        console.log("cccc")
         $http.get('./webresources/AuthorService', {})
                 .success(function (data, status, headers, config) {
                     //$scope.lista = data;
                     listaAutor = data;
-                    var j;
                     listAutorJson = [];
+                    console.log("Hola");
+                    console.log(data);
                     for (var i = 0; i < listaAutor.length; i++) {
                         listAutorJson.push({
                             "id": listaAutor[i].id,
@@ -22,7 +24,6 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
                     }
                     $scope.listaA = listAutorJson;
                     $scope.listAuthor = listAutorJson;
-                    console.log("face23")
                     $scope.datosFormularioAutor = {};
                     $scope.panelEditar = false;
                     $scope.listar = function () {
@@ -34,7 +35,6 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
         });
         $scope.listar = function () {
             $scope.listaA = listAutorJson;
-            console.log(listaA);
             consecutivoAutor = listAutorJson.length;
         };
         //guardar
@@ -52,7 +52,6 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
                 return;
             if (!$scope.datosFormularioAutor.id) {
                 $scope.datosFormularioAutor.id = consecutivoAutor++;
-                console.log(consecutivoAutor);
             }
             alert("Datos guardados con exito");
             var autor = [$scope.datosFormularioAutor.id,
@@ -81,11 +80,14 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
         //eliminar
         $scope.eliminar = function (data) {
             if (confirm('\xbfDesea elminar este registro?')) {
-                for (var i = 0; i < $scope.lista.length; i++) {
-                    if ($scope.lista[i].id == data.id) {
-                        $scope.lista.splice(i, 1);
+                $http.post('./webresources/AuthorService/Delete', data).then(
+                    function successCallback(response) {
+                        console.log("Successfully POST-ed data");
+                    },
+                    function errorCallback(response) {
+                        console.log("POST-ing of data failed");
                     }
-                }
+            );
             }
         };
     }]);

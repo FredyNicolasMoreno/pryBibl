@@ -5,10 +5,13 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -16,24 +19,23 @@ import javax.persistence.OneToMany;
  * @author USUARIO
  */
 @Entity
-public class Author {
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
+public class Author implements Serializable {
 
     @Id
     private int id;
     private String name;
     private String nationality;
+    
     @OneToMany(mappedBy = "author")
+    @JsonBackReference
     private List<Book> books;
-
-    public List<Book> getBooks() {
-        return books;
-    }
 
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
-    
-    
+    }   
     
     public int getId() {
         return id;
@@ -58,6 +60,4 @@ public class Author {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-    
-    
 }

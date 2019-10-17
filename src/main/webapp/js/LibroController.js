@@ -7,36 +7,42 @@ var listBookJson = [];
 module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         $scope.listaB = listBookJson;
         $scope.author = listAutorJson;
-        console.log(listAutorJson);
-        console.log($scope.author);
-        $http.get('./webresources/ServicioLibro', {}).success(function (data, status, headers, config) {
+        $http.get('./webresources/BookService', {}).success(function (data, status, headers, config) {
             // $scope.lista = data;
                     listaLibro = data;
                     $scope.author = listAutorJson;
                     //listar
-                    var j;
                     listBookJson = [];
+                    console.log("face11");
+                    console.log(data);
                     for (var i = 0; i < listaLibro.length; i++) {
                         listBookJson.push({
-                            "adress": listaLibro[i].adress,
-                            "city": listaLibro[i].city,
+                            "author": listaLibro[i].author,
+                            "bookDescription": listaLibro[i].bookDescription,
+                            "edition": listaLibro[i].edition,
                             "id": listaLibro[i].id,
-                            "name": listaLibro[i].name,
-                            "phonenumber": listaLibro[i].phonenumber
+                            "quantity": listaLibro[i].quantity,
+                            "title": listaLibro[i].title
                         });
                     }
                     $scope.listaB = listBookJson;
-                    console.log("face23");
+                    
                     $scope.datosFormularioCliente = {};
                     $scope.panelEditar = false;
                     $scope.listar = function () {
-                        $scope.listaC = listClientJson;
+                        $scope.listaB = listBookJson;
                     };
                     $scope.author = listAutorJson;
                     $scope.listar();
         }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
         });
+        
+         $scope.listar = function () {
+            $scope.listaB = listBookJson;
+            consecutivoLibro = listaLibro.length;
+            $scope.author = listAutorJson;
+        };
 
         //guardar
         $scope.nuevo = function () {

@@ -27,13 +27,13 @@
                 </th>
             </tr>
             <tr dir-paginate="row in listaB|filter: q|itemsPerPage:10">
-                <td>{{row.titulo}}</td>
+                <td>{{row.title}}</td>
 
-                <td>{{row.descripcion}}</td>
+                <td>{{row.bookDescription}}</td>
 
-                <td>{{row.cantidad}}</td>
+                <td>{{row.quantity}}</td>
 
-                <td>{{row.edicion}}</td>
+                <td>{{row.edition}}</td>
 
                 <td class="row">{{row.author.name}}</td>     
 

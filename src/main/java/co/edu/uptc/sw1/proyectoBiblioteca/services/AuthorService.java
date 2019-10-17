@@ -27,10 +27,17 @@ public class AuthorService {
     @POST
     public void add(Object[] author) {
        ad.createAutor(author);
+       System.out.println("add: " + author.toString());
     }
     
     @GET
     public List<Author> enviarLista() {
         return ad.getAutor();
     }
+    
+    @POST
+    @Path("Delete")
+    public void deleteAuthor(Object[] author){
+        System.out.println("Delete: " + author.toString());
+   }
 }

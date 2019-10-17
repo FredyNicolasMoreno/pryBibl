@@ -5,6 +5,10 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -14,7 +18,10 @@ import javax.persistence.ManyToOne;
  * @author fnico
  */
 @Entity
-public class Book {
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
+public class Book implements Serializable {
 
     private String title;
     private String bookDescription;
@@ -22,7 +29,9 @@ public class Book {
     private int edition;
     @Id
     private int id;
+    
     @ManyToOne
+    @JsonManagedReference
     private Author author;
 
     public int getId() {
@@ -72,6 +81,4 @@ public class Book {
     public void setAuthor(Author author) {
         this.author = author;
     }
-    
-    
 }

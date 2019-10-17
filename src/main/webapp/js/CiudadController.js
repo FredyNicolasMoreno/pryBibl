@@ -17,8 +17,6 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
         $http.get('./webresources/CityService', {})
                 .success(function (data, status, headers, config) {
                     // $scope.lista = data;
-                    console.log("HOla");
-
                     //listar
                     listaCiudad = data;
                     var j;
