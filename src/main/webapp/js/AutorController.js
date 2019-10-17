@@ -21,7 +21,7 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
                         });
                     }
                     $scope.listaA = listAutorJson;
-                    $scope.listAuthor = listJson;
+                    $scope.listAuthor = listAutorJson;
                     console.log("face23")
                     $scope.datosFormularioAutor = {};
                     $scope.panelEditar = false;
@@ -58,7 +58,7 @@ module.controller('AutorCtrl', ['$scope', '$filter', '$http', function ($scope, 
             var autor = [$scope.datosFormularioAutor.id,
                 $scope.datosFormularioAutor.nombre,
                 $scope.datosFormularioAutor.nacionalidad];
-            $http.post('./webresources/AuthorService/').then(
+            $http.post('./webresources/AuthorService/', autor).then(
                     function successCallback(response) {
                         console.log("Successfully POST-ed data");
                     },
