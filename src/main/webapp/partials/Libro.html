@@ -26,7 +26,7 @@
                     <input class="form-control" ng-model="q"  placeholder="Buscar"/>
                 </th>
             </tr>
-            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
+            <tr dir-paginate="row in listaB|filter: q|itemsPerPage:10">
                 <td>{{row.titulo}}</td>
 
                 <td>{{row.descripcion}}</td>
@@ -35,7 +35,7 @@
 
                 <td>{{row.edicion}}</td>
 
-                <td class="row">{{row.autor.nombre}}</td>     
+                <td class="row">{{row.author.name}}</td>     
 
                 <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
@@ -70,7 +70,7 @@
                 <label>Autor</label>
                 <select id="ciudad" class="form-control" 
                         ng-model="datosFormulario.autor"
-                        ng-options="option.nombre for option in listaAutor track by option.id">
+                        ng-options="option.name for option in author track by option.id">
                 </select>
                 <div ng-show="errores.autor">{{errores.autor}}</div>
             </div>

@@ -21,17 +21,17 @@ public class BookDao {
     private EntityManager em;
     
      public void createBook(Object[] list){
-        insertBook(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), Integer.parseInt(String.valueOf(list[3])), Integer.parseInt(String.valueOf(list[5])),Integer.parseInt(String.valueOf(list[6])));
+        insertBook(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), Integer.parseInt(String.valueOf(list[3])), Integer.parseInt(String.valueOf(list[4])),Integer.parseInt(String.valueOf(list[5])));
     }
     
     public void insertBook(int id, String title, String bookdescription, int quantity, int edition, int authorId){
-       em.createNativeQuery("INSERT INTO client (title, bookdescription, quantity, edition, id, author_id) VALUES (?,?,?,?,?,?)")
+       em.createNativeQuery("INSERT INTO book (title, bookdescription, quantity, edition, id, author_id) VALUES (?,?,?,?,?,?)")
       .setParameter(1, title)
       .setParameter(2, bookdescription)
       .setParameter(3, quantity)
       .setParameter(4, edition)
-      .setParameter(4, id)
-      .setParameter(5, authorId)
+      .setParameter(5, id)
+      .setParameter(6, authorId)
       .executeUpdate();
     }
 

@@ -28,7 +28,6 @@ public class BookService {
     
     @GET
     public List<Book> enviarLista() {
-        System.out.println("HOls");
         return bd.getBooks();
     }
 }

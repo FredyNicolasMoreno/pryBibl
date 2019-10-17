@@ -6,9 +6,13 @@ var listBookJson = [];
 
 module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         $scope.listaB = listBookJson;
+        $scope.author = listAutorJson;
+        console.log(listAutorJson);
+        console.log($scope.author);
         $http.get('./webresources/ServicioLibro', {}).success(function (data, status, headers, config) {
             // $scope.lista = data;
                     listaLibro = data;
+                    $scope.author = listAutorJson;
                     //listar
                     var j;
                     listBookJson = [];
@@ -22,13 +26,13 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
                         });
                     }
                     $scope.listaB = listBookJson;
-                    $scope.listCity = listJson;
                     console.log("face23");
                     $scope.datosFormularioCliente = {};
                     $scope.panelEditar = false;
                     $scope.listar = function () {
                         $scope.listaC = listClientJson;
                     };
+                    $scope.author = listAutorJson;
                     $scope.listar();
         }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
@@ -50,7 +54,6 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
          
             if ($scope.datosFormulario.id) {
                 console.log("editar")
-                $scope.lista.push($scope.datosFormulario);
                
                 var libro = [$scope.datosFormulario.id,
                     $scope.datosFormulario.titulo,
@@ -58,7 +61,7 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
                     $scope.datosFormulario.cantidad,
                     $scope.datosFormulario.edicion,
                     $scope.datosFormulario.autor];
-                $http.post('./webresources/ServicioLibro/', libro).then(
+                $http.post('./webresources/BookService/', libro).then(
                         function successCallback(response) {
                             console.log("Successfully POST-ed data");
                         },
@@ -68,9 +71,7 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
                 );
             }
             if (!$scope.datosFormulario.id) {
-                console.log("Nuevo")
                 $scope.datosFormulario.id = consecutivoLibro++;
-                $scope.lista.push($scope.datosFormulario);
                 var libro = [$scope.datosFormulario.id,
                     $scope.datosFormulario.titulo,
                     $scope.datosFormulario.descripcion,
