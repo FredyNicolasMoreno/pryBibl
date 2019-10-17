@@ -3,31 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uptc.sw1.proyectoBiblioteca.services;
+package co.edu.uptc.sw1.proyectoBiblioteca.logic;
 
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 
 /**
  *
  * @author USUARIO
  */
-@Path("ClientService")
-public class ClientService {
+public class LogicClient {
     @EJB
     private ClientDao cd;
     
-    @POST
-    public void add(Client client) {
+    public void insert (Client client){
         cd.createClient(client);
     }
     
-    @GET
     public List<Client> enviarLista() {
         return cd.getClients();
     }

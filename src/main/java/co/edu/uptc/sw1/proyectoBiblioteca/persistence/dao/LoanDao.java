@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uptc.sw1.proyectoBiblioteca.logic;
+package co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao;
 
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Loan;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.LoanState;

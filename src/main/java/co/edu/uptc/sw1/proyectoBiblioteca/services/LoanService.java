@@ -5,8 +5,8 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.ClientDao;
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.LoanDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.LoanDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Loan;
 import java.util.ArrayList;

@@ -66,7 +66,7 @@
             <input id="direccion" 
                    class="form-control" 
                    type="text"
-                   ng-model="datosFormularioCliente.direccion"
+                   ng-model="datosFormularioCliente.adress"
                    placeholder="direccion"/>
             <div ng-show="errores.direccion">{{errores.direccion}}</div>
         </div>				
@@ -75,7 +75,7 @@
             <input id="telefono" 
                    class="form-control" 
                    type="text"
-                   ng-model="datosFormularioCliente.telefono"
+                   ng-model="datosFormularioCliente.phonenumber"
                    placeholder="telefono"/>
             <div ng-show="errores.telefono">{{errores.telefono}}</div>
         </div> 
@@ -83,7 +83,7 @@
             <div class="form-group col-md-6" ng-class="errores.ciudad ? 'error' : ''">
                 <label>ciudad</label>
                 <select id="ciudad" class="form-control" 
-                        ng-model="datosFormularioCliente.ciudad"
+                        ng-model="datosFormularioCliente.city"
                         ng-options="option.name for option in listCity track by option.id">
                 </select>
                 <div ng-show="errores.ciudad">{{errores.ciudad}}</div>

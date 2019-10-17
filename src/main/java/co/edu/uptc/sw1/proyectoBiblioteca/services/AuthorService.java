@@ -5,7 +5,7 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.AutorDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.AutorDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Author;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.ArrayList;

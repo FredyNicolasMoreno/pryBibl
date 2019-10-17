@@ -1,20 +1,20 @@
 'use strict';
 
 
-var listaCliente=  []; /*[
-                        {"id":1, "nombre":"Deisy", "direccion":"car 8a # 45 - 121", "telefono":"3114456556", "ciudad":{"id":1, "nombre":"Tunja"}},
-                        {"id":2, "nombre":"Pedro", "direccion":"car 46 # 163b - 41", "telefono":"3207594755", "ciudad":{"id":2, "nombre":"Bogota"}}
-                    ];*/
-var consecutivoCliente=0;
+var listaCliente = []; /*[
+ {"id":1, "nombre":"Deisy", "direccion":"car 8a # 45 - 121", "telefono":"3114456556", "ciudad":{"id":1, "nombre":"Tunja"}},
+ {"id":2, "nombre":"Pedro", "direccion":"car 46 # 163b - 41", "telefono":"3207594755", "ciudad":{"id":2, "nombre":"Bogota"}}
+ ];*/
+var consecutivoCliente = 0;
 var listClientJson = [];
 var listaCliente = [];
 
 module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
-    //listar
-    $scope.listaC = listClientJson;
-    $scope.listaCiudad=$scope.ciudades;
-    $http.get('./webresources/ClientService', {})
-    
+        //listar
+        $scope.listaC = listClientJson;
+        $scope.listaCiudad = $scope.ciudades;
+        $http.get('./webresources/ClientService', {})
+
                 .success(function (data, status, headers, config) {
                     // $scope.lista = data;
                     listaCliente = data;
@@ -41,62 +41,62 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
                 }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
         });
-    $scope.listar = function () {
-        $scope.listaC = listClientJson;
-        console.log(listaC);
-        consecutivoCliente = listClientJson.length;
-    };
-    //guardar
-    $scope.nuevoCliente = function () {
-        $scope.panelEditar = true;
-        $scope.datosFormularioCliente = {};
-    };
-    
-    $scope.guardarCliente = function () {
-       $scope.errores = {};
-        var error = false;
-        
-        if (error)
-            return;
-        if(!$scope.datosFormularioCliente.id){
-            $scope.datosFormularioCliente.id=consecutivoCliente++;
-                console.log(consecutivoCliente);
-        }
-        alert("Sus datos han sido guardados con éxito");
-        var cliente = [$scope.datosFormularioCliente.id,
-                    $scope.datosFormularioCliente.nombre,
-                    $scope.datosFormularioCliente.direccion,
-                    $scope.datosFormularioCliente.telefono,
-                    $scope.datosFormularioCliente.ciudad.id];
-        $http.post('./webresources/ClientService', cliente).then(
-                function successCallback(response) {
-                    console.log("Successfully POST-ed data");
-                },
-                function errorCallback(response) {
-                    console.log("POST-ing of data failed");
-                }
-        );
-        $scope.cancelar(); 
-    };
-    
-    $scope.cancelar = function () {
-        $scope.panelEditar = false;
-        $scope.datosFormularioCliente = {};
-    };
+        $scope.listar = function () {
+            $scope.listaC = listClientJson;
+            console.log(listaC);
+            consecutivoCliente = listClientJson.length;
+        };
+        //guardar
+        $scope.nuevoCliente = function () {
+            $scope.panelEditar = true;
+            $scope.datosFormularioCliente = {};
+        };
 
-    //editar
-    $scope.editar = function (data) {
-        $scope.panelEditar = true;
-        $scope.datosFormularioCliente = data;
-    };
-    //eliminar
-    $scope.eliminar = function (data){
-       if (confirm('\xbfDesea elminar este registro?')) {    
-            for(var i=0;i<$scope.lista.length;i++){
-                if($scope.lista[i].id==data.id){
-                    $scope.lista.splice(i,1);
+        $scope.guardarCliente = function () {
+            $scope.errores = {};
+            var error = false;
+
+            if (error)
+                return;
+            if (!$scope.datosFormularioCliente.id) {
+                $scope.datosFormularioCliente.id = consecutivoCliente++;
+                console.log(consecutivoCliente);
+            }
+            alert("Sus datos han sido guardados con éxito");
+            var cliente = {"id": $scope.datosFormularioCliente.id,
+                "name": $scope.datosFormularioCliente.name,
+                "adress":$scope.datosFormularioCliente.adress,
+                "phonenumber": $scope.datosFormularioCliente.phonenumber,
+                "city": $scope.datosFormularioCliente.city};
+            $http.post('./webresources/ClientService', cliente).then(
+                    function successCallback(response) {
+                        console.log("Successfully POST-ed data");
+                    },
+                    function errorCallback(response) {
+                        console.log("POST-ing of data failed");
+                    }
+            );
+            $scope.cancelar();
+        };
+
+        $scope.cancelar = function () {
+            $scope.panelEditar = false;
+            $scope.datosFormularioCliente = {};
+        };
+
+        //editar
+        $scope.editar = function (data) {
+            $scope.panelEditar = true;
+            $scope.datosFormularioCliente = data;
+        };
+        //eliminar
+        $scope.eliminar = function (data) {
+            if (confirm('\xbfDesea elminar este registro?')) {
+                for (var i = 0; i < $scope.lista.length; i++) {
+                    if ($scope.lista[i].id == data.id) {
+                        $scope.lista.splice(i, 1);
+                    }
                 }
             }
-        }
-    };
-}]);
+        };
+    }]);

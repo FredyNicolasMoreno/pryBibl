@@ -5,8 +5,9 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.CityDao;
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.ClientDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.CityDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
+import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicCity;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.City;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.ArrayList;
@@ -22,19 +23,18 @@ import javax.ws.rs.Path;
  */
 @Path("CityService")
 public class CityService {
+     
      @EJB
-    private CityDao cd;
+     private LogicCity p;
 
      @POST
     public void add(City city) {
-        cd.createCity(city);
-        System.out.println(city.getId());
-         System.out.println(city.getName());
-         System.out.println(city);
+        //cd.createCity(city);
+        p.insert(city);
     }
     
     @GET
     public List<City> enviarLista() {
-        return cd.getCities();
+        return p.enviarLista();
     }
 }
