@@ -24,7 +24,6 @@ public class Client {
     private String adress;
     private String phonenumber;
 
-    
     public int getId() {
         return id;
     }

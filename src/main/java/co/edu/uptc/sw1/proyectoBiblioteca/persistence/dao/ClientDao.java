@@ -22,7 +22,7 @@ public class ClientDao {
     private EntityManager em;
     
     public void createClient(Client client){
-       // insertClient(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), list[3].toString(), Integer.parseInt(String.valueOf(list[4])));
+        
        em.persist(client);
     }
     

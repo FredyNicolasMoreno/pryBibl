@@ -5,9 +5,7 @@
  */
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
-import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicCity;
 import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicClient;
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.ClientDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Client;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,7 +25,6 @@ public class ClientService {
     
     @POST
     public void add(Client client) {
-        System.out.println(client.getId() + "--" + client.getName() + "--" + client.getPhonenumber() + "--" + client.getCity() +  "--cityName: "+ client.getCity().getName() + "--" + client.getAdress());
         this.clients.insert(client);
     }
     

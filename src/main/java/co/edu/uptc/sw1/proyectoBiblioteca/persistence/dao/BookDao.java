@@ -21,7 +21,6 @@ public class BookDao {
     private EntityManager em;
     
      public void createBook(Book book){
-        //insertBook(Integer.parseInt(String.valueOf(list[0])), list[1].toString(), list[2].toString(), Integer.parseInt(String.valueOf(list[3])), Integer.parseInt(String.valueOf(list[4])),Integer.parseInt(String.valueOf(list[5])));
         em.persist(book);
      }
     

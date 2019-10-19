@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -19,18 +20,14 @@ import javax.persistence.OneToMany;
  * @author USUARIO
  */
 @Entity
-@JsonIdentityInfo(
-  generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")
-public class Author implements Serializable {
+public class Author {
 
     @Id
     private int id;
     private String name;
     private String nationality;
     
-    @OneToMany(mappedBy = "author")
-    @JsonBackReference
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Book> books;
 
     public void setBooks(List<Book> books) {

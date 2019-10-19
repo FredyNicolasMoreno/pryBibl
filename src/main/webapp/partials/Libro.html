@@ -61,7 +61,7 @@
             <input id="titulo" 
                    class="form-control" 
                    type="text"
-                   ng-model="datosFormulario.titulo"
+                   ng-model="datosFormulario.title"
                    placeholder="titulo"/>
             <div ng-show="errores.titulo">{{errores.titulo}}</div>
         </div>
@@ -69,7 +69,7 @@
             <div class="form-group col-md-6" ng-class="errores.autor ? 'error' : ''">
                 <label>Autor</label>
                 <select id="ciudad" class="form-control" 
-                        ng-model="datosFormulario.autor"
+                        ng-model="datosFormulario.author"
                         ng-options="option.name for option in author track by option.id">
                 </select>
                 <div ng-show="errores.autor">{{errores.autor}}</div>
@@ -80,7 +80,7 @@
             <input id="descripcion" 
                    class="form-control" 
                    type="text"
-                   ng-model="datosFormulario.descripcion"
+                   ng-model="datosFormulario.description"
                    placeholder="descripcion"/>
             <div ng-show="errores.descripcion">{{errores.descripcion}}</div>
         </div>				
@@ -90,7 +90,7 @@
                    class="form-control" 
                    type="number"
                    min="1" max="10"
-                   ng-model="datosFormulario.cantidad"
+                   ng-model="datosFormulario.quantity"
                    placeholder="cantidad"/>
             <div ng-show="errores.cantidad">{{errores.cantidad}}</div>
         </div>
@@ -100,7 +100,7 @@
                    class="form-control" 
                    type="number"
                    min="1" max="10"
-                   ng-model="datosFormulario.edicion"
+                   ng-model="datosFormulario.edition"
                    placeholder="edicion"
                    />
             <div ng-show="errores.edicion">{{errores.edicion}}</div>

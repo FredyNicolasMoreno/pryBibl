@@ -18,10 +18,7 @@ import javax.persistence.ManyToOne;
  * @author fnico
  */
 @Entity
-@JsonIdentityInfo(
-  generator = ObjectIdGenerators.PropertyGenerator.class, 
-  property = "id")
-public class Book implements Serializable {
+public class Book{
 
     private String title;
     private String bookDescription;
@@ -31,7 +28,6 @@ public class Book implements Serializable {
     private int id;
     
     @ManyToOne
-    @JsonManagedReference
     private Author author;
 
     public int getId() {

@@ -20,9 +20,14 @@ public class CityDao {
     @PersistenceContext
     private EntityManager em;
     
-    public void createCity(City list){
-        //insertCity(Integer.parseInt(String.valueOf(list[0])), list[1].toString());
-        em.persist(list);
+    public void createCity(City city){
+        String query = "select max(c.id) from City c";
+        if (Integer.parseInt(em.createQuery(query).getSingleResult().toString()) == 0) {
+            city.setId(1);
+        }else{
+            city.setId(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) + 1);
+        }
+        em.persist(city);
     }
     
     public void insertCity(int id, String name){

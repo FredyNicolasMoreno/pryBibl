@@ -10,7 +10,6 @@ package co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities;
  * @author fnico
  */
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import javax.persistence.Entity;

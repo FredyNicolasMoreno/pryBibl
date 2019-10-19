@@ -6,7 +6,6 @@
 package co.edu.uptc.sw1.proyectoBiblioteca.services;
 
 import co.edu.uptc.sw1.proyectoBiblioteca.logic.LogicBook;
-import co.edu.uptc.sw1.proyectoBiblioteca.persistence.dao.BookDao;
 import co.edu.uptc.sw1.proyectoBiblioteca.persistence.entities.Book;
 import java.util.List;
 import javax.ejb.EJB;
