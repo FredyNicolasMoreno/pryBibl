@@ -22,8 +22,13 @@ public class ClientDao {
     private EntityManager em;
     
     public void createClient(Client client){
-        
-       em.persist(client);
+        String query = "select max(c.id) from City c";
+        if(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) == 0){
+            client.setId(1);
+        }else{
+            client.setId(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) + 1);
+        }
+        em.persist(client);
     }
     
     public void insertClient(int id, String name, String adress, String phonenumber, int cityId){

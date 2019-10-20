@@ -26,11 +26,7 @@ public class LoanService {
     private LoanDao ld;
     
     @POST
-    public void add(Object[] loan) {
-        System.out.println("TAmaniio: " + loan.length);
-        for (int i = 0; i < loan.length; i++) {
-            System.out.println(loan[i]);
-        }
+    public void add(Loan loan) {
         ld.createLoan(loan);
     }
     

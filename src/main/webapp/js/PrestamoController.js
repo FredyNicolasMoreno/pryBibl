@@ -37,9 +37,6 @@ module.controller('PrestamoCtrl', ['$scope', '$filter', '$http', function ($scop
                     console.log("face23");
                     $scope.datosFormularioPrestamo = {};
                     $scope.panelEditar = false;
-                    $scope.listar = function () {
-                        $scope.listaP = listLoanJson;
-                    };
                     $scope.listar();
                 }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
@@ -68,14 +65,14 @@ module.controller('PrestamoCtrl', ['$scope', '$filter', '$http', function ($scop
                 console.log(consecutivoPrestamo);
             }
             alert("Sus datos han sido guardados con éxito");
-            var prestamo = [$scope.datosFormularioPrestamo.id,
-                $scope.datosFormularioPrestamo.fecha,
-                $scope.datosFormularioPrestamo.dias,
-                $scope.datosFormularioPrestamo.estado,
-                $scope.datosFormularioPrestamo.observacion,
-                $scope.datosFormularioPrestamo.libro.id,
-                $scope.datosFormularioPrestamo.cliente.id];
-            $http.post('./webresources/LoanService', prestamo).then(
+            var loan = {"id": $scope.datosFormularioPrestamo.id,
+                "date": $scope.datosFormularioPrestamo.date,
+                "observation": $scope.datosFormularioPrestamo.observation,
+                "loanstate": $scope.datosFormularioPrestamo.loanstate,
+                "days": $scope.datosFormularioPrestamo.days,
+                "client": $scope.datosFormularioPrestamo.client,
+                "book": $scope.datosFormularioPrestamo.book};
+            $http.post('./webresources/LoanService', loan).then(
                     function successCallback(response) {
                         console.log("Successfully POST-ed data");
                     },

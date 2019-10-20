@@ -69,23 +69,23 @@
             <input id="Fecha" 
                    class="form-control" 
                    type="date"
-                   ng-model="datosFormularioPrestamo.fecha"
+                   ng-model="datosFormularioPrestamo.date"
                    placeholder="fecha"/>
-            <div ng-show="errores.fecha">{{errores.fecha}}</div>
+            <div ng-show="errores.date">{{errores.date}}</div>
         </div>
         <div class="form-group col-md-6" ng-class="errores.observation ? 'error' : ''">
             <label for="Fecha">Observación</label>
             <input id="observation" 
                    class="form-control" 
                    type="text"
-                   ng-model="datosFormularioPrestamo.observacion"
+                   ng-model="datosFormularioPrestamo.observation"
                    placeholder="observation"/>
             <div ng-show="errores.observation">{{errores.observation}}</div>
         </div>
         <div class="form-group col-md-6" ng-class="errores.estado ? 'error' : ''">
             <label for="Fecha">estado</label>
             <select id="estado" class="form-control" 
-                    ng-model="datosFormularioPrestamo.estado"
+                    ng-model="datosFormularioPrestamo.state"
                     ng-options="option for option in listaEstados track by option">
             </select>
             <div ng-show="errores.estado">{{errores.estado}}</div>
@@ -95,7 +95,7 @@
             <input id="dias" 
                    class="form-control" 
                    type="number"
-                   ng-model="datosFormularioPrestamo.dias"
+                   ng-model="datosFormularioPrestamo.days"
                    placeholder="dias"
                    min="1" max="20"/>
             <div ng-show="errores.dias">{{errores.dias}}</div>
@@ -104,7 +104,7 @@
             <div class="form-group col-md-6" ng-class="errores.cliente ? 'error' : ''">
                 <label>Cliente</label>
                 <select id="cliente" class="form-control" 
-                        ng-model="datosFormularioPrestamo.cliente"
+                        ng-model="datosFormularioPrestamo.client"
                         ng-options="option.name for option in listaCliente track by option.id">
                 </select>
                 <div ng-show="errores.cliente">{{errores.cliente}}</div>
@@ -114,7 +114,7 @@
             <div class="form-group col-md-6" ng-class="errores.libro ? 'error' : ''">
                 <label>Libro</label>
                 <select id="libro" class="form-control" 
-                        ng-model="datosFormularioPrestamo.libro"
+                        ng-model="datosFormularioPrestamo.book"
                         ng-options="option.title for option in listaLibro track by option.id">
                 </select>
                 <div ng-show="errores.libro">{{errores.libro}}</div>

@@ -22,6 +22,12 @@ public class AutorDao {
     private EntityManager em;
 
     public void createAutor(Author author){
+        String query = "select max(a.id) from Author a";
+        if(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) == 0){
+            author.setId(1);
+        }else{
+            author.setId(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) + 1);
+        }
         em.persist(author);
     }
 

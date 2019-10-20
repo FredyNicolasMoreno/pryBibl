@@ -32,6 +32,24 @@ public class Loan {
     @Enumerated(EnumType.STRING)
     private LoanState loanState;
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public LoanState getLoanState() {
+        return loanState;
+    }
+
+    public void setLoanState(LoanState loanState) {
+        this.loanState = loanState;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
