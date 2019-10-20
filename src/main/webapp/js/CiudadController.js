@@ -5,7 +5,6 @@ var listaCiudad = [];
 var listJson = [];
 var consecutivoCiudad = 0;
 
-
 module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         //listar
         /*$scope.lista;
@@ -14,28 +13,32 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
          $scope.listar=function(){
          $scope.lista = listaCiudad;*/
         $scope.ciudades = listJson;
-        $http.get('./webresources/CityService', {})
-                .success(function (data, status, headers, config) {
-                    // $scope.lista = data;
-                    //listar
-                    listaCiudad = data;
-                    listJson = [];
-
-                    for (var i = 0; i < listaCiudad.length; i++) {
-                        listJson.push({
-                            "id": listaCiudad[i].id,
-                            "name": listaCiudad[i].name
-                        });
-                    }
-                    $scope.lista = listJson;
-                    $scope.ciudades = listJson;
-                    $scope.datosFormularioCiudad = {};
-                    $scope.panelEditar = false;
-                    $scope.listar();
-                }).error(function (data, status, headers, config) {
-            alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
-        });
-
+        function actualizarCiudad(){};
+        actualizarCiudad = function() {
+            $http.get('./webresources/CityService', {})
+                    .success(function (data, status, headers, config) {
+                        // $scope.lista = data;
+                        //listar
+                        listaCiudad = data;
+                        listJson = [];
+                        for (var i = 0; i < listaCiudad.length; i++) {
+                            listJson.push({
+                                "id": listaCiudad[i].id,
+                                "name": listaCiudad[i].name
+                            });
+                        }
+                        $scope.lista = listJson;
+                        $scope.ciudades = listJson;
+                        $scope.datosFormularioCiudad = {};
+                        $scope.panelEditar = false;
+                        $scope.listar();
+                    }).error(function (data, status, headers, config) {
+                alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
+            });
+        };
+        
+        exports:[actualizarCiudad()]; 
+        actualizarCiudad();
         $scope.listar = function () {
             $scope.lista = listJson;
             listaCiudad = listJson;
@@ -58,11 +61,12 @@ module.controller('CiudadCtrl', ['$scope', '$filter', '$http', function ($scope,
             }
             // $scope.lista.push($scope.datosFormularioCiudad);
             alert("Sus datos han sido guardados con éxito");
-            var city = { "id": $scope.datosFormularioCiudad.id,
+            var city = {"id": $scope.datosFormularioCiudad.id,
                 "name": $scope.datosFormularioCiudad.name};
             $http.post('./webresources/CityService', city).then(
                     function successCallback(response) {
                         console.log("Successfully POST-ed data");
+                        actualizarCiudad();
                     },
                     function errorCallback(response) {
                         console.log("POST-ing of data failed");

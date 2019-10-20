@@ -21,10 +21,16 @@ public class BookDao {
     private EntityManager em;
     
      public void createBook(Book book){
+         String query = "select max(b.id) from Book b";
+        if (Integer.parseInt(em.createQuery(query).getSingleResult().toString()) == 0) {
+            book.setId(1);
+        }else{
+            book.setId(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) + 1);
+        }
         em.persist(book);
      }
     
-    public void insertBook(int id, String title, String bookdescription, int quantity, int edition, int authorId){
+    /*public void insertBook(int id, String title, String bookdescription, int quantity, int edition, int authorId){
        em.createNativeQuery("INSERT INTO book (title, bookdescription, quantity, edition, id, author_id) VALUES (?,?,?,?,?,?)")
       .setParameter(1, title)
       .setParameter(2, bookdescription)
@@ -33,7 +39,7 @@ public class BookDao {
       .setParameter(5, id)
       .setParameter(6, authorId)
       .executeUpdate();
-    }
+    }*/
 
     public List<Book> getBooks() {
         String query = "Select b from Book b";

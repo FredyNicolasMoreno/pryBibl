@@ -30,12 +30,12 @@ public class CityDao {
         em.persist(city);
     }
     
-    public void insertCity(int id, String name){
+   /* public void insertCity(int id, String name){
        em.createNativeQuery("INSERT INTO city (id, name) VALUES (?,?)")
       .setParameter(1, id)
       .setParameter(2, name)
       .executeUpdate();
-    }
+    }*/
     
     public List<City> getCities() {
         String query = "Select c from City c";

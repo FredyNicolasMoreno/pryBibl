@@ -38,27 +38,6 @@ public class LoanDao {
         em.persist(loan);
     }
 
-    public void insertLoan(int id, String date, int days, String loanstate, String observation, int bookId, int clientId) {
-        String newd= date.substring(5, 7) + "/"+ date.substring(8, 10)+ "/" + date.substring(0,4);
-        Date date1 = null;
-		try {
-			date1 = new SimpleDateFormat("MM/dd/yyyy").parse(newd);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-        em.createNativeQuery("INSERT INTO loan (id, date, days, fine, loanstate, observation, book_id, client_id) VALUES (?,?,?,?,?,?,?,?)")
-                .setParameter(1, id)
-                .setParameter(2, new Date(), TemporalType.DATE)
-                .setParameter(3, days)
-                .setParameter(4, 0)
-                .setParameter(5, LoanState.valueOf(loanstate))
-                .setParameter(6, observation)
-                .setParameter(7, bookId)
-                .setParameter(8, clientId)
-                .executeUpdate();
-    }
-
     public List<Loan> getLoan() {
         String query = "Select l from Loan l";
         return em.createQuery(query).getResultList();
