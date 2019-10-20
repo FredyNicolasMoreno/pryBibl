@@ -1,3 +1,4 @@
+
 'use strict';
 
 
@@ -13,31 +14,35 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
         //listar
         $scope.listaC = listClientJson;
         $scope.listaCiudad = $scope.ciudades;
-        $http.get('./webresources/ClientService', {})
+        function actualizarCliente(){};
+        actualizarCliente = function () {
+            $http.get('./webresources/ClientService', {})
 
-                .success(function (data, status, headers, config) {
-                    // $scope.lista = data;
-                    listaCliente = data;
-                    //listar
-                    listClientJson = [];
-                    for (var i = 0; i < listaCliente.length; i++) {
-                        listClientJson.push({
-                            "adress": listaCliente[i].adress,
-                            "city": listaCliente[i].city,
-                            "id": listaCliente[i].id,
-                            "name": listaCliente[i].name,
-                            "phonenumber": listaCliente[i].phonenumber
-                        });
-                    }
-                    $scope.listaC = listClientJson;
-                    $scope.listCity = listJson;
-                    
-                    $scope.datosFormularioCliente = {};
-                    $scope.panelEditar = false;
-                    $scope.listar();
-                }).error(function (data, status, headers, config) {
-            alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
-        });
+                    .success(function (data, status, headers, config) {
+                        // $scope.lista = data;
+                        listaCliente = data;
+                        //listar
+                        listClientJson = [];
+                        for (var i = 0; i < listaCliente.length; i++) {
+                            listClientJson.push({
+                                "adress": listaCliente[i].adress,
+                                "city": listaCliente[i].city,
+                                "id": listaCliente[i].id,
+                                "name": listaCliente[i].name,
+                                "phonenumber": listaCliente[i].phonenumber
+                            });
+                        }
+                        $scope.listaC = listClientJson;
+                        $scope.listCity = listJson;
+
+                        $scope.datosFormularioCliente = {};
+                        $scope.panelEditar = false;
+                        $scope.listar();
+                    }).error(function (data, status, headers, config) {
+                alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
+            });
+        };
+        actualizarCliente();
         $scope.listar = function () {
             $scope.listaC = listClientJson;
             consecutivoCliente = listClientJson.length;
@@ -59,12 +64,13 @@ module.controller('ClienteCtrl', ['$scope', '$filter', '$http', function ($scope
             alert("Sus datos han sido guardados con éxito");
             var cliente = {"id": $scope.datosFormularioCliente.id,
                 "name": $scope.datosFormularioCliente.name,
-                "adress":$scope.datosFormularioCliente.adress,
+                "adress": $scope.datosFormularioCliente.adress,
                 "phonenumber": $scope.datosFormularioCliente.phonenumber,
                 "city": $scope.datosFormularioCliente.city};
             $http.post('./webresources/ClientService', cliente).then(
                     function successCallback(response) {
                         console.log("Successfully POST-ed data");
+                        actualizarCliente();
                     },
                     function errorCallback(response) {
                         console.log("POST-ing of data failed");

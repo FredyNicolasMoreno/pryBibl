@@ -7,6 +7,8 @@ var listBookJson = [];
 module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         $scope.listaB = listBookJson;
         $scope.author = listAutorJson;
+         function actualizarBook(){};
+        actualizarBook = function () {
         $http.get('./webresources/BookService', {}).success(function (data, status, headers, config) {
             // $scope.lista = data;
             listaLibro = data;
@@ -31,7 +33,8 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
         }).error(function (data, status, headers, config) {
             alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
         });
-
+    }
+        actualizarBook();
         $scope.listar = function () {
             $scope.listaB = listBookJson;
             consecutivoLibro = listaLibro.length;
@@ -62,6 +65,7 @@ module.controller('LibroCtrl', ['$scope', '$filter', '$http', function ($scope, 
             $http.post('./webresources/BookService/', libro).then(
                     function successCallback(response) {
                         console.log("Successfully POST-ed data");
+                        actualizarBook();
                     },
                     function errorCallback(response) {
                         console.log("POST-ing of data failed");

@@ -22,11 +22,16 @@ public class ClientDao {
     private EntityManager em;
     
     public void createClient(Client client){
-        
+        String query = "select max(c.id) from Client c";
+        if (Integer.parseInt(em.createQuery(query).getSingleResult().toString()) == 0) {
+            client.setId(1);
+        }else{
+            client.setId(Integer.parseInt(em.createQuery(query).getSingleResult().toString()) + 1);
+        }
        em.persist(client);
     }
     
-    public void insertClient(int id, String name, String adress, String phonenumber, int cityId){
+    /*public void insertClient(int id, String name, String adress, String phonenumber, int cityId){
        em.createNativeQuery("INSERT INTO client (id, adress, name, phonenumber, city_id) VALUES (?,?,?,?,?)")
       .setParameter(1, id)
       .setParameter(2, adress)
@@ -34,7 +39,7 @@ public class ClientDao {
       .setParameter(4, phonenumber)
       .setParameter(5, cityId)
       .executeUpdate();
-    }
+    }*/
 
     public List<Client> getClients() {
         String query = "Select c from Client c";
